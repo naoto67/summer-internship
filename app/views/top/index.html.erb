@@ -1,3 +1,7 @@
 <div class="container">
-  Top Index
+  <div class="top-recipe-list">
+    <% @recipes.each do |recipe| %>
+      <%= render partial: 'components/recipe', locals: { recipe: recipe } %>
+    <% end %>
+  </div>
 </div>

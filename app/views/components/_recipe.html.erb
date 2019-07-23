@@ -1,0 +1,12 @@
+<div class="card recipe-card">
+  <img class="recipe-img" src="<%= recipe.image_url %>" alt="">
+  <div class="card-body">
+    <p class="card-title">
+      <%= recipe.title %>
+    </p>
+    <p class="card-text">
+      <%= recipe.description %>
+    </p>
+    <%= link_to "詳しく見る", recipe_path(recipe), class: "card-link" %>
+  </div>
+</div>
