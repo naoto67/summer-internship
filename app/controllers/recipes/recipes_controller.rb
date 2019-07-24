@@ -1,7 +1,7 @@
 class Recipes::RecipesController < ApplicationController
 
   def show
-    @recipe = Recipe.includes(:ingredients, :steps).find(params[:id])
+    @recipe = Recipe.includes(:steps).find(params[:id])
   end
 
   def new
@@ -11,7 +11,7 @@ class Recipes::RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      redirect_to @recipe
+      redirect_to new_recipe_step_path(@recipe)
     else
       render :new
     end

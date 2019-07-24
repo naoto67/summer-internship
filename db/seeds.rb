@@ -20,24 +20,5 @@
     },
   ]
 
-  ingredients = [
-    {
-      name: "茄子",
-      amount: "3本",
-    },
-    {
-      name: "ごま油",
-      amount: "適量",
-    },
-    {
-      name: "豆腐",
-      amount: "適量",
-    },
-    {
-      name: "醤油",
-      amount: "大さじ1",
-    },
-  ]
-  recipe.ingredients.create(ingredients)
   recipe.steps.create(steps)
 end
