@@ -18,13 +18,13 @@
         <% end %>
         <div class="step-description-field">
           <div class="form-group">
-            <textarea name="step[description]" class="form-control step-description-value"></textarea>
+            <textarea name="step[description]" class="form-control step-description-value active"></textarea>
           </div>
         </div>
       </div>
       <div class="button-area">
         <div class="flex-button">
-          <button id="submit" class="btn btn-primary">工程を追加</button>
+          <button id="submit" class="btn btn-primary" disabled>工程を追加</button>
         </div>
         <div class="flex-button">
           <%= link_to "公開", recipe_publish_path(@recipe), method: :post, class: "btn btn-primary"%>
@@ -35,16 +35,39 @@
 </div>
 
 <script type="text/javascript">
+  $(".active").on('keyup paste', function(e) {
+    const value = e.target.value;
+    if(value.length > 0) {
+      $("#submit").prop("disabled", false)
+    } else {
+      $("#submit").prop("disabled", true)
+    }
+  });
   $('#submit').on('click', function(e) {
     e.preventDefault();
     const description = $(".step-description-value").eq(-1).val();
     $.post("<%== recipe_steps_path(@recipe) %>", 'step[description]='+description)
       .done( function(data) {
         const field = $(".step-description-field").eq(-1).clone();
+
         $(".step-description-value").eq(-1).prop("disabled", true);
+        $(".active").off('keyup paste')
+        $(".step-description-value").eq(-1).removeClass("active");
+
         field.find(".step-description-value").val("");
         $("#description-fields").append(field);
+
+        field.on('keyup paste', function(e) {
+          const value = e.target.value;
+          if(value.length > 0) {
+            $("#submit").prop("disabled", false)
+          } else {
+            $("#submit").prop("disabled", true)
+          }
+        });
+
+        $("#submit").prop("disabled", true)
       })
-      .fail( function() {  } )
+      .fail( function(err) { console.log(err) } )
   });
 </script>
