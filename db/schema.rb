@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_114033) do
+ActiveRecord::Schema.define(version: 2019_07_24_135225) do
 
   create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", default: "", null: false
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2019_07_22_114033) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", limit: 1, default: 0, null: false
+    t.index ["status"], name: "index_recipes_on_status"
   end
 
   create_table "steps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
