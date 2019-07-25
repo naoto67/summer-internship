@@ -8,6 +8,11 @@
         <h5 class="card-title"><%= @recipe.title %></h5>
         <p class="card-text"><%= @recipe.description %></p>
         <%= link_to "編集", edit_recipe_path(@recipe), class: "btn btn-primary" %>
+        <% if @recipe.published? %>
+          <%= link_to "非公開", recipe_unpublish_path(@recipe), method: :post, class: "btn btn-secondary"%>
+        <% else %>
+          <%= link_to "公開", recipe_publish_path(@recipe), method: :post, class: "btn btn-primary"%>
+        <% end %>
       </div>
     </div>
     <div class="recipe-show-steps list-group list-group-flush">
