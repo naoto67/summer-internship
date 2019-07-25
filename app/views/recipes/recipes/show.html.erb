@@ -8,6 +8,7 @@
         <h5 class="card-title"><%= @recipe.title %></h5>
         <p class="card-text"><%= @recipe.description %></p>
         <%= link_to "編集", edit_recipe_path(@recipe), class: "btn btn-primary" %>
+        <%= link_to "工程を追加", new_recipe_step_path(@recipe), class: "btn btn-primary"%>
         <% if @recipe.published? %>
           <%= link_to "非公開", recipe_unpublish_path(@recipe), method: :post, class: "btn btn-secondary"%>
         <% else %>
