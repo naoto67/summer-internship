@@ -1,4 +1,52 @@
-<div class="recipe-form">
-  <%= form_with url: recipe_steps_path(@recipe) do |form| %>
-  <% end %>
+<div class="container">
+  <div class="form-group">
+    <label>タイトル</label>
+    <input type="text" class="form-control" value="<%= @recipe.title %>" disabled>
+    <label>キャッチコピー</label>
+    <textarea class="form-control" disabled><%= @recipe.description %></textarea>
+  </div>
+  <div class="step-form">
+    <form>
+      <div id="description-fields">
+        <h4>工程</h4>
+        <% @recipe.steps.each do |step| %>
+          <div class="step-description-field">
+            <div class="form-group">
+              <textarea name="step[description]" class="form-control step-description-value" disabled><%= step.description %></textarea>
+            </div>
+          </div>
+        <% end %>
+        <div class="step-description-field">
+          <div class="form-group">
+            <textarea name="step[description]" class="form-control step-description-value"></textarea>
+          </div>
+        </div>
+      </div>
+      <button id="submit" class="btn btn-primary">工程を追加</button>
+      <button id="publish" class="btn btn-primary">公開</button>
+    </form>
+  </div>
 </div>
+
+<script type="text/javascript">
+  $('#submit').on('click', function(e) {
+    e.preventDefault();
+    const description = $(".step-description-value").eq(-1).val();
+    $.post("<%== recipe_steps_path(@recipe) %>", 'step[description]='+description)
+      .done( function(data) {
+        const field = $(".step-description-field").eq(-1).clone();
+        $(".step-description-value").eq(-1).prop("disabled", true);
+        field.find(".step-description-value").val("");
+        $("#description-fields").append(field);
+      })
+      .fail( function() {  } )
+  });
+  $('#publish').on('click', function(e) {
+    e.preventDefault();
+    $.ajax({
+      url : '<%== recipe_path(@recipe) %>',
+      type : 'PATCH',
+      data : {recipe: {status: "published"}},
+    })
+  })
+</script>

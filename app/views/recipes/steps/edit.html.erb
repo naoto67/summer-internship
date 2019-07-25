@@ -1,0 +1,9 @@
+<div class="edit-step-form form">
+  <%= form_with model: @step, url: recipe_step_path(@step) do |form| %>
+    <div class="form-group">
+      <%= form.label :description, "タイトル" %>
+      <%= form.text_area :description, class: "form-control", placeholder: "例) オクラの胡麻和え" %>
+    </div>
+    <%= form.submit "更新", class: "btn btn-primary" %>
+  <% end %>
+</div>

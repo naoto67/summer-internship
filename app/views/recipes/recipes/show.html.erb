@@ -1,3 +1,29 @@
-<div class="container">
-
+<div class="container recipe-show">
+  <div class="card">
+  <h5 class="card-header">レシピ詳細</h5>
+  <div class="card-body">
+    <div class="row recipe-detail">
+      <div class="col-sm-4"><img src="<%= @recipe.image_url %>" alt=""></div>
+      <div class="col-sm-8">
+        <h5 class="card-title"><%= @recipe.title %></h5>
+        <p class="card-text"><%= @recipe.description %></p>
+        <%= link_to "編集", edit_recipe_path(@recipe), class: "btn btn-primary" %>
+      </div>
+    </div>
+    <div class="recipe-show-steps list-group list-group-flush">
+      <% @recipe.steps.each_with_index do |step, i| %>
+        <div class="list-group-item step-item">
+          <div class="row">
+            <div class="col">
+              <%= i+1 %>. <%= step.description %>
+            </div>
+            <div class="col-sm-3 to-edit">
+              <a href="<%= edit_recipe_step_path(step) %>" class="btn-primary btn">編集</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 </div>
