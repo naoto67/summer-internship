@@ -46,6 +46,6 @@ class Recipes::RecipesController < ApplicationController
     end
 
     def update_recipe_params
-      params.fetch(:recipe).permit(:title, :description, :status)
+      params.fetch(:recipe).permit(:title, :description)
     end
 end
