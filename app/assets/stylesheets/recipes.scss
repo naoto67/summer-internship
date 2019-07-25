@@ -1,0 +1,43 @@
+.recipe-card {
+  width: 300px;
+  margin: 3vh;
+  .recipe-img {
+    height: 200px;
+    object-fit: cover;
+  }
+}
+
+.top-recipe-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form {
+  margin: 0 20vw;
+  width: 60vw;
+}
+
+.recipe-show {
+  .recipe-detail {
+    margin-bottom: 20px;
+  }
+  .recipe-show-steps {
+    .step-item {
+      .to-edit {
+        text-align: center;
+      }
+    }
+  }
+}
+.edit-recipe-form {
+  margin: 0 20vw;
+  width: 60vw;
+}
+.button-area {
+  display: flex;
+  justify-content: space-between;
+  .flex-button {
+
+  }
+}
