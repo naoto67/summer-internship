@@ -28,6 +28,15 @@ class Recipes::StepsController < ApplicationController
     end
   end
 
+  def destroy
+    @step = Step.find(params[:id])
+    if @step.destroy
+      redirect_to @step.recipe
+    else
+      render :edit
+    end
+  end
+
   private
     def step_params
       params.fetch(:step, {}).permit(:description)

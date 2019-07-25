@@ -4,6 +4,13 @@
       <%= form.label :description, "タイトル" %>
       <%= form.text_area :description, class: "form-control", placeholder: "例) オクラの胡麻和え" %>
     </div>
-    <%= form.submit "更新", class: "btn btn-primary" %>
+    <div class="button-area">
+      <div class="flex-button">
+        <%= form.submit "更新", class: "btn btn-primary" %>
+      </div>
+      <div class="flex-button">
+        <%= link_to "削除", recipe_step_path(@step), method: :delete, class: "btn btn-secondary" %>
+      </div>
+    </div>
   <% end %>
 </div>
