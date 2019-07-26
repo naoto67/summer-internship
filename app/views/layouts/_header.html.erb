@@ -1,6 +1,7 @@
 <nav class="navbar navbar-light bg-light navbar-custom">
-  <a class="navbar-brand" href="<%= root_path %>">Reivo Summer Internship</a>
-  <a href="<%= new_recipe_path %>">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">レシピを投稿</button>
-  </a>
+  <%= link_to "Reivo Summer Internship", root_path, class: "navbar-brand"%>
+  <div class="button-area">
+    <%= link_to "全てのレシピへ", recipes_path, class: "btn btn-outline-success my-2 header-button-item" %>
+    <%= link_to "レシピを投稿", new_recipe_path, class: "btn btn-outline-success my-2 header-button-item" %>
+  </div>
 </nav>
