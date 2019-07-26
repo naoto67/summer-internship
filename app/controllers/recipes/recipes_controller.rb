@@ -2,6 +2,9 @@ class Recipes::RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
+    # @recipes = Recipe.preload(:steps).all
+    # @recipes = Recipe.includes(:steps).all
+    # @recipes = Recipe.eager_load(:steps).all
   end
 
   def show
