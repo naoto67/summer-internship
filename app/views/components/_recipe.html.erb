@@ -1,5 +1,5 @@
 <div class="card recipe-card">
-  <img class="recipe-img" src="<%= recipe.image_url %>" alt="">
+  <%= image_tag image_path(recipe.image_url), alt: "", class: "recipe-img" %>
   <div class="card-body">
     <p class="card-title">
       <%= recipe.title %>
