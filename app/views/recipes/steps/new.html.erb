@@ -1,10 +1,12 @@
 <div class="container">
-  <div class="form-group">
-    <label>タイトル</label>
-    <input type="text" class="form-control" value="<%= @recipe.title %>" disabled>
-    <label>キャッチコピー</label>
-    <textarea class="form-control" disabled><%= @recipe.description %></textarea>
-  </div>
+  <%= form_with model: @recipe do |f| %>
+    <div class="form-group">
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title, class: "form-control", readonly: true %>
+      <%= f.label :description, "キャッチコピー" %>
+      <%= f.text_area :description, class: "form-control", readonly: true %>
+    </div>
+  <% end %>
   <div class="step-form">
     <form>
       <div id="description-fields">
@@ -12,13 +14,19 @@
         <% @recipe.steps.each do |step| %>
           <div class="step-description-field">
             <div class="form-group">
-              <textarea name="step[description]" class="form-control step-description-value" disabled><%= step.description %></textarea>
+              <%= text_area :step, :description,
+                value: step.description,
+                class: "form-control step-description-value",
+                disabled: true
+              %>
             </div>
           </div>
         <% end %>
         <div class="step-description-field">
           <div class="form-group">
-            <textarea name="step[description]" class="form-control step-description-value active"></textarea>
+            <%= text_area :step, :description,
+              class: "form-control step-description-value active"
+            %>
           </div>
         </div>
       </div>
