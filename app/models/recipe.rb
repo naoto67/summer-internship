@@ -9,4 +9,7 @@ class Recipe < ApplicationRecord
     draft: 0,
     published: 1,
   }
+
+  validates :image_url, format: { with: /http(s|):\/\// }
+
 end
