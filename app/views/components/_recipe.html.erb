@@ -1,12 +1,16 @@
 <div class="card recipe-card">
   <!-- recipeの画像を表示 -->
+  <%= image_tag image_path(recipe.image_url), class: "recipe-img" %>
   <div class="card-body">
     <p class="card-title">
       <!-- recipeのタイトルを表示 -->
+      <%= recipe.title %>
     </p>
     <p class="card-text">
-      <!-- recipeのタイトルを表示 -->
+      <!-- recipeのdescriptionを表示 -->
+      <%= recipe.description %>
     </p>
     <!-- recipeのshowページへ遷移 -->
+    <%= link_to "詳細へ", recipe_path(recipe) %>
   </div>
 </div>
