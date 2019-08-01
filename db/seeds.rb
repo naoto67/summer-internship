@@ -3,7 +3,7 @@
     title: "ひんやり美味しい♡中華風茄子の冷や奴♪",
     description: "冷たく冷やした中華風の茄子と絹豆腐がよく合います♪スプーンですくって一緒にお口へどうぞ～(o´ω｀o)",
     image_url: "https://img.cpcdn.com/recipes/5725562/280x487s/a698819aecb7ad60054dc9346a609414.jpg?u=1228553&p=1562138939",
-    status: i%2,
+    # status: i%2,
   )
 
   steps = [
